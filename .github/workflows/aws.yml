@@ -10,6 +10,7 @@ env:
   ECR_REPOSITORY: demo-repository
   ECS_SERVICE: nextdemoservice
   ECS_CLUSTER: NextDemo
+  ECR_TASK: nextdemo
 
 permissions:
   contents: read
@@ -37,7 +38,7 @@ jobs:
 
     - name: Download task definition
       run: |
-          aws ecs describe-task-definition --task-definition nextdemo --query taskDefinition > task-definition-nomdemo.json
+          aws ecs describe-task-definition --task-definition ${{ env.ECR_TASK }} --query taskDefinition > task-definition-nomdemo.json
 
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
