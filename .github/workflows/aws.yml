@@ -6,10 +6,10 @@ on:
       - main
 
 env:
-  AWS_REGION: AWS_REGION
-  ECR_REPOSITORY: ECR_REPOSITORY
-  ECS_SERVICE: ECS_SERVICE
-  ECS_CLUSTER: ECS_CLUSTER
+  AWS_REGION: ${{ env.AWS_REGION }}
+  ECR_REPOSITORY: ${{ env.ECR_REPOSITORY }}
+  ECS_SERVICE: ${{ env.ECS_SERVICE }}
+  ECS_CLUSTER: ${{ env.ECS_CLUSTER }}
 
 permissions:
   contents: read
