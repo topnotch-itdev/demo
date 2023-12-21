@@ -6,10 +6,9 @@ on:
       - main
 
 env:
-  AWS_REGION: ${{ env.AWS_REGION }}
-  ECR_REPOSITORY: ${{ env.ECR_REPOSITORY }}
-  ECS_SERVICE: ${{ env.ECS_SERVICE }}
-  ECS_CLUSTER: ${{ env.ECS_CLUSTER }}
+  ECR_REPOSITORY: demo-repository
+  ECS_SERVICE: demoservice
+  ECS_CLUSTER: NomDemo
 
 permissions:
   contents: read
@@ -61,6 +60,6 @@ jobs:
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: ${{ env.ECS_SERVICE }}
-        cluster: ${{ env.ECS_CLUSTER }}
+        service: $ECS_SERVICE
+        cluster: $ECS_CLUSTER
         wait-for-service-stability: true
